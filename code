@@ -1,0 +1,18 @@
+class Email:
+    def __init__(self, sender, subject, body):
+        self.sender = sender
+        self.subject = subject
+        self.body = body
+
+class EmailBox:
+    def __init__(self):
+        self.inbox = []
+    def send_email(self, sender, subject, body):
+        self.inbox.append(Email(sender, subject, body))
+    def read_emails(self):
+        return [{"sender": e.sender, "subject": e.subject, "body": e.body} for e in self.inbox]
+
+email_box = EmailBox()
+email_box.send_email("john@example.com", "Hello", "Meeting at 5 PM")
+email_box.send_email("doe@example.com", "Report", "Please review the report")
+print(email_box.read_emails())
